@@ -21,16 +21,23 @@ exports.user_signup_post = [
     .isAlphanumeric()
     .withMessage("First name has non-alphanumeric characters."),
   body("last_name").trim().escape(),
-  body("username", "Username must be between 4 and 15 characters")
+  body("username")
     .trim()
     .isLength({ min: 4, max: 15 })
     .escape()
-    .isAlphanumeric()
-    .withMessage("Username must be alphanumeric"),
-  body("password", "Password must be at least 8 character")
+    .withMessage("Username must be between 4 and 15 characters")
+    .not()
+    .contains(" ")
+    .withMessage("Username cannot contain spaces")
+    .matches(/^[A-Za-z0-9_]+$/)
+    .withMessage(
+      "Username can only contain alphanumeric characters and underscores"
+    ),
+  body("password")
     .trim()
     .isLength({ min: 8 })
     .escape()
+    .withMessage("Password must be at least 8 character")
     .isAlphanumeric()
     .withMessage("Password must be alphanumeric"),
   body(
