@@ -13,7 +13,6 @@ const UserSchema = new Schema({
     enum: ["guest", "member"],
     default: "guest",
   },
-  messages: [{ type: Schema.ObjectId, ref: "Message" }],
 });
 
 UserSchema.virtual("fullName").get(() => {
