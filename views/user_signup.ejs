@@ -11,15 +11,30 @@
     <form method="post">
       <div class="form-group">
         <label for="first_name">First Name</label>
-        <input type="text" name="first_name" id="first_name" />
+        <input
+          type="text"
+          name="first_name"
+          id="first_name"
+          value="<%= (user) ? user.firstName : '' %>"
+        />
       </div>
       <div class="form-group">
-        <label for="first_name">Last Name (Optional)</label>
-        <input type="text" name="first_name" id="first_name" />
+        <label for="last_name">Last Name (Optional)</label>
+        <input
+          type="text"
+          name="last_name"
+          id="last_name"
+          value="<%= (user) ? user.lastName : '' %>"
+        />
       </div>
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" />
+        <input
+          type="text"
+          name="username"
+          id="username"
+          value="<%= (user) ? user.username : '' %>"
+        />
       </div>
       <div class="form-group">
         <label for="password">Password</label>
