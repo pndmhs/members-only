@@ -84,7 +84,7 @@ exports.user_signup_post = [
 ];
 
 exports.user_login_get = asyncHandler(async (req, res, next) => {
-  res.render("user_login", { title: "Members Only | Login" });
+  res.render("user_login", { title: "Members Only | Login", user: req.user });
 });
 
 exports.user_login_post = passport.authenticate("local", {
