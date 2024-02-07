@@ -4,10 +4,12 @@
   <body>
     <%- include("./partials/header.ejs") %>
     
-    <% if (user) { %>
-      <h1>Welcome back <%= user.firstName %>!</h1>
-    <% } else { %>
-      <h1>Welcome to Members Only!</h1>
-    <% } %>
+    <main>
+      <% if (user) { %>
+        <h1>Welcome back <%= user.firstName %>!</h1>
+      <% } else { %>
+        <h1>Welcome to Members Only!</h1>
+      <% } %>
+    </main>
   </body>
 </html>
