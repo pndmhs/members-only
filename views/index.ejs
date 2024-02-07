@@ -2,7 +2,10 @@
 <html>
   <%- include("./partials/head.ejs") %>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% if (user) { %>
+    <h1>Welcome back <%= user.firstName %>!</h1>
+    <% } else { %>
+    <h1>Welcome to Members Only!</h1>
+    <% } %>
   </body>
 </html>
