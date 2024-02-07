@@ -91,7 +91,3 @@ exports.user_login_post = passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/login",
 });
-
-exports.user_home_get = asyncHandler(async (req, res, next) => {
-  res.render("user_home", { title: "Members Only | Home", user: req.user });
-});
