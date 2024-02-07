@@ -2,6 +2,7 @@ const User = require("../models/user");
 
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
+const passport = require("passport");
 
 const bcrypt = require("bcrypt");
 
@@ -79,5 +80,14 @@ exports.user_signup_post = [
 ];
 
 exports.user_login_get = asyncHandler(async (req, res, next) => {
-  res.render("user_login.ejs", { title: "Members Only | Login" });
+  res.render("user_login", { title: "Members Only | Login" });
+});
+
+exports.user_login_post = passport.authenticate("local", {
+  successRedirect: "/user-home",
+  failureRedirect: "/login",
+});
+
+exports.user_home_get = asyncHandler(async (req, res, next) => {
+  res.render("user_home", { title: "Members Only | Home", user: req.user });
 });
