@@ -32,7 +32,7 @@ app.set("view engine", "ejs");
 app.use(
   session({
     secret: process.env.SECRET_KEY,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
   })
 );
