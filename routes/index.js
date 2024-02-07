@@ -13,6 +13,4 @@ router.get("/login", user_controller.user_login_get);
 
 router.post("/login", user_controller.user_login_post);
 
-router.get("/user-home", user_controller.user_home_get);
-
 module.exports = router;
