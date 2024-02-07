@@ -77,3 +77,7 @@ exports.user_signup_post = [
     });
   }),
 ];
+
+exports.user_login_get = asyncHandler(async (req, res, next) => {
+  res.render("user_login.ejs", { title: "Members Only | Login" });
+});
