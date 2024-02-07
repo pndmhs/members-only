@@ -7,12 +7,12 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 
 exports.home_get = asyncHandler(async (req, res, next) => {
-  res.render("index", { title: "Members Only | Home", user: req.user });
+  res.render("index", { title: "Home | Members Only", user: req.user });
 });
 
 exports.user_signup_get = asyncHandler(async (req, res, next) => {
   res.render("user_signup.ejs", {
-    title: "Members Only | Sign Up",
+    title: "Sign Up | Members Only",
     user: null,
   });
 });
@@ -71,7 +71,7 @@ exports.user_signup_post = [
 
         if (!errors.isEmpty()) {
           res.render("user_signup", {
-            title: "Members Only | Sign Up",
+            title: "Sign Up | Members Only",
             user: user,
           });
         } else {
@@ -84,7 +84,7 @@ exports.user_signup_post = [
 ];
 
 exports.user_login_get = asyncHandler(async (req, res, next) => {
-  res.render("user_login", { title: "Members Only | Login", user: req.user });
+  res.render("user_login", { title: "Login | Members Only", user: req.user });
 });
 
 exports.user_login_post = passport.authenticate("local", {
