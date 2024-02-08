@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   status: {
     type: String,
     required: true,
-    enum: ["guest", "member"],
+    enum: ["guest", "member", "admin"],
     default: "guest",
   },
 });
