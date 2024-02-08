@@ -24,4 +24,6 @@ router.get("/join-club", user_controller.join_club_get);
 
 router.post("/join-club", user_controller.join_club_post);
 
+router.get("/become-admin", user_controller.become_admin_get);
+
 module.exports = router;
