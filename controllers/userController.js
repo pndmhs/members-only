@@ -7,6 +7,9 @@ const passport = require("passport");
 
 const bcrypt = require("bcrypt");
 
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
+
 exports.home_get = asyncHandler(async (req, res, next) => {
   const messages = await Message.find().exec();
   res.render("index", {
@@ -20,6 +23,7 @@ exports.user_signup_get = asyncHandler(async (req, res, next) => {
   res.render("user_signup.ejs", {
     title: "Sign Up | Members Only",
     user: req.user,
+    filledData: null,
   });
 });
 
@@ -49,6 +53,7 @@ exports.user_signup_post = [
       if (existingUser) {
         throw new Error("Username has already been taken");
       }
+      return true;
     }),
   body("password")
     .trim()
@@ -84,8 +89,10 @@ exports.user_signup_post = [
         if (!errors.isEmpty()) {
           res.render("user_signup", {
             title: "Sign Up | Members Only",
-            user: user,
+            user: req.user,
+            filledData: user,
           });
+          return;
         } else {
           await user.save();
           res.redirect("/sign-up");
@@ -119,3 +126,43 @@ exports.join_club_get = asyncHandler(async (req, res, next) => {
     user: req.user,
   });
 });
+
+exports.join_club_post = [
+  body("join_code")
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .withMessage("Code must not be empty")
+    .custom((value) => {
+      if (value !== process.env.JOIN_CODE) {
+        throw new Error("Code is not correct. Try again !");
+      }
+      return true;
+    }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.render("join_form", {
+        title: "Join Member | Members Only",
+        user: req.user,
+      });
+      return;
+    } else {
+      const user = new User({
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        username: req.user.username,
+        password: req.user.password,
+        status: "member",
+        _id: req.user._id,
+      });
+      await User.findByIdAndUpdate(req.user._id, user);
+      res.render("congratulate_user", {
+        title: "Join Member | Members Only",
+        user: req.user,
+      });
+    }
+  }),
+];
