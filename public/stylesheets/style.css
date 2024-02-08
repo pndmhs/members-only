@@ -12,6 +12,8 @@ html {
 body {
   min-height: 100vh;
   font-family: "Inter", sans-serif;
+  background-color: black;
+  color: #e0e0e0;
 }
 
 body,
@@ -39,20 +41,23 @@ img {
   height: auto;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 header {
   width: 100%;
-  padding: 1rem 3rem;
+  padding: 1.5rem 3rem;
   display: flex;
   align-items: center;
+  background-color: #1a1a1a;
 }
 
 .logo {
   margin-right: auto;
-}
-
-.logo h1 {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 nav ul {
@@ -62,17 +67,114 @@ nav ul {
 
 nav ul li {
   font-size: 1rem;
+  font-weight: 500;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+nav ul li:hover {
+  color: white;
 }
 
 main {
   padding: 0 3rem;
+  width: 100%;
+  margin: 1rem auto;
 }
 
 main h1 {
   font-size: 1.5rem;
+}
+
+.message-board {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  margin: 0 auto;
+}
+
+.message-board > h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.message {
+  background-color: #1a1a1a;
+  padding: 1rem 1.25rem;
+  border-radius: 22px;
+}
+
+.message > h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.message .timestamp {
+  text-align: right;
+}
+
+.form-container {
+  width: 32rem;
+  margin: 0 auto;
+  /* background: #1a1a1a; */
+  padding: 3rem 4rem;
+  border-radius: 24px;
+  border: 1px solid gray;
+}
+
+.form-container h1 {
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-container form,
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form {
+  gap: 2rem;
+}
+
+.form-container .form-group {
+  gap: 0.5rem;
+}
+
+form input,
+form textarea,
+form button {
+  font-style: inherit;
+  font-size: inherit;
+  color: inherit;
+  border-radius: 6px;
+}
+
+form input,
+form textarea {
+  background-color: #111111;
+  border: 1px solid gray;
+  padding: 10px 12px;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: 1px solid #f0f0f0;
+}
+
+form button {
+  background-color: inherit;
+  border: 1px solid #f0f0f0;
+  padding: 12px 0;
+  cursor: pointer;
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+form button:hover {
+  background-color: #111111;
 }
