@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/header.ejs") %>
+    
+    <main>
+      <% if (user.status === "member") { %>
+        <div class="form-container">
+          <h2>Become an Admin</h2>
+          <form method="post">
+            <div class="form-group">
+              <input
+                type="text"
+                name="admin_code"
+                id="admin_code"
+                placeholder="Enter the secret code to become an admin"
+              />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      <% } else { %>
+        <h2>You must join the club to see this page</h2>
+      <% } %>
+    </main>
+  </body>
+</html>
