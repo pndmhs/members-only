@@ -19,7 +19,7 @@ exports.home_get = asyncHandler(async (req, res, next) => {
 exports.user_signup_get = asyncHandler(async (req, res, next) => {
   res.render("user_signup.ejs", {
     title: "Sign Up | Members Only",
-    user: null,
+    user: req.user,
   });
 });
 
