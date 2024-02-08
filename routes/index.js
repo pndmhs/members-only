@@ -22,4 +22,6 @@ router.post("/new-message", message_controller.message_create_post);
 
 router.get("/join-club", user_controller.join_club_get);
 
+router.post("/join-club", user_controller.join_club_post);
+
 module.exports = router;
