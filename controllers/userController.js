@@ -112,3 +112,10 @@ exports.user_logout_get = asyncHandler(async (req, res, next) => {
     res.redirect("/");
   });
 });
+
+exports.join_club_get = asyncHandler(async (req, res, next) => {
+  res.render("join_form", {
+    title: "Join Member | Members Only",
+    user: req.user,
+  });
+});
