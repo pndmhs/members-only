@@ -4,7 +4,10 @@
   </div>
   <nav>
     <ul>
+      <li><a href="/">Messages</a></li>
       <% if (user) { %>
+        <li><a href="/new-message">New Message</a></li>
+        <li><a href="/join">Join Club</a></li>
         <li><a href="/log-out">Log Out</a></li>
       <% } else { %>
         <li><a href="/login">Login</a></li>
