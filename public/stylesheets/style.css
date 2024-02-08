@@ -178,3 +178,20 @@ form button {
 form button:hover {
   background-color: #111111;
 }
+
+.signup-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.signup-success h1 {
+  font-weight: 600;
+}
+
+.signup-success a {
+  color: white;
+  text-decoration: underline;
+}
