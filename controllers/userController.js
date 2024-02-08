@@ -43,7 +43,13 @@ exports.user_signup_post = [
     .matches(/^[A-Za-z0-9_]+$/)
     .withMessage(
       "Username can only contain alphanumeric characters and underscores"
-    ),
+    )
+    .custom(async (value) => {
+      const existingUser = await User.findOne({ username: value }).exec();
+      if (existingUser) {
+        throw new Error("Username has already been taken");
+      }
+    }),
   body("password")
     .trim()
     .isLength({ min: 8 })
