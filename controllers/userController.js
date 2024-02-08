@@ -125,7 +125,7 @@ exports.user_logout_get = asyncHandler(async (req, res, next) => {
 
 exports.join_club_get = asyncHandler(async (req, res, next) => {
   res.render("join_form", {
-    title: "Join Member | Members Only",
+    title: "Join Member",
     user: req.user,
   });
 });
@@ -148,7 +148,7 @@ exports.join_club_post = [
 
     if (!errors.isEmpty()) {
       res.render("join_form", {
-        title: "Join Member | Members Only",
+        title: "Join Member",
         user: req.user,
       });
       return;
@@ -163,9 +163,16 @@ exports.join_club_post = [
       });
       await User.findByIdAndUpdate(req.user._id, user);
       res.render("congratulate_user", {
-        title: "Join Member | Members Only",
+        title: "Join Member",
         user: req.user,
       });
     }
   }),
 ];
+
+exports.become_admin_get = asyncHandler(async (req, res, next) => {
+  res.render("admin_form", {
+    title: "Become an Admin",
+    user: req.user,
+  });
+});
