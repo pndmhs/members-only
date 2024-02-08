@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Message = require("../models/message");
 
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
@@ -7,7 +8,12 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 
 exports.home_get = asyncHandler(async (req, res, next) => {
-  res.render("index", { title: "Home | Members Only", user: req.user });
+  const messages = await Message.find().exec();
+  res.render("index", {
+    title: "Home | Members Only",
+    user: req.user,
+    messages: messages,
+  });
 });
 
 exports.user_signup_get = asyncHandler(async (req, res, next) => {
