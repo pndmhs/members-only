@@ -95,7 +95,10 @@ exports.user_signup_post = [
           return;
         } else {
           await user.save();
-          res.redirect("/sign-up");
+          res.render("signup_success", {
+            title: "Sign Up | Members Only",
+            user: req.user,
+          });
         }
       }
     });
