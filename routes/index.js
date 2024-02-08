@@ -20,4 +20,6 @@ router.get("/new-message", message_controller.message_create_get);
 
 router.post("/new-message", message_controller.message_create_post);
 
+router.get("/join-club", user_controller.join_club_get);
+
 module.exports = router;
