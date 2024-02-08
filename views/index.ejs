@@ -7,15 +7,16 @@
     <main>
       <div class="message-board">
         <h2>Message Board</h2>
-          <% if (messages) { %>
-            <% messages.forEach(message => { %>
-              <div class="message">
-                <h3><%= message.title %></h3>
-                <p><%= message.text %></p>
-                <p class="timestamp"><%= message.timestamp_formatted %></p>
-              </div>
-            <% }) %>
-          <% } %>
+        <% if (messages) { %>
+          <% messages.forEach(message => { %>
+            <div class="message">
+              <h3><%= message.title %></h3>
+              <p><%= message.text %></p>
+              <hr>
+              <p class="timestamp"><%= message.timestamp_formatted %></p>
+            </div>
+          <% }) %>
+        <% } %>
       </div>
     </main>
   </body>
