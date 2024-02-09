@@ -5,7 +5,11 @@
     <%- include("./partials/header.ejs") %>
     
     <main>
-      <h2>Congratulations! You just joined the secret club!</h2>
+      <% if (user.status === "member") { %>
+        <h2>Congratulations! You just joined the secret club!</h2>
+      <% } else if (user.status === "admin") { %>
+        <h2>Congratulations! You just become an admin!</h2>
+      <% } %>
     </main>
   </body>
 </html>
