@@ -14,6 +14,7 @@ const usersRouter = require("./routes/users");
 const User = require("./models/user");
 
 const compression = require("compression");
+const helmet = require("helmet");
 
 const app = express();
 
@@ -26,6 +27,20 @@ main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
 }
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      fontSrc: [
+        "'self'",
+        "https://fonts.googleapis.com",
+        "https://fonts.gstatic.com",
+      ],
+      // other directives...
+    },
+  })
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
