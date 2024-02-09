@@ -42,3 +42,12 @@ exports.message_create_post = [
     }
   }),
 ];
+
+exports.message_delete_get = asyncHandler(async (req, res, next) => {
+  const message = await Message.findById(req.params.id).populate("user").exec();
+  res.render("delete_message", {
+    title: "Delete Message",
+    user: req.user,
+    message: message,
+  });
+});
