@@ -103,12 +103,19 @@ main h2 {
   background-color: #1a1a1a;
   padding: 1rem 1.25rem;
   border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .message > h3 {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+
+.message hr {
+  margin: 0;
 }
 
 .message .timestamp {
