@@ -16,4 +16,8 @@ MessageSchema.virtual("timestamp_formatted").get(function () {
   );
 });
 
+MessageSchema.virtual("url").get(function () {
+  return "/message/" + this._id;
+});
+
 module.exports = mongoose.model("Message", MessageSchema);
