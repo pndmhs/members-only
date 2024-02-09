@@ -30,4 +30,6 @@ router.post("/become-admin", user_controller.become_admin_post);
 
 router.get("/message/:id/delete", message_controller.message_delete_get);
 
+router.post("/message/:id/delete", message_controller.message_delete_post);
+
 module.exports = router;
