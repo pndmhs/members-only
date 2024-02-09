@@ -51,3 +51,14 @@ exports.message_delete_get = asyncHandler(async (req, res, next) => {
     message: message,
   });
 });
+
+exports.message_delete_post = asyncHandler(async (req, res, next) => {
+  const message = Message.findById(req.params.id);
+
+  if (message === null) {
+    res.redirect("/");
+  }
+
+  await Message.findByIdAndDelete(req.params.id);
+  res.redirect("/");
+});
