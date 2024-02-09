@@ -16,7 +16,12 @@
                 <p>From: <%= message.user.username %></p>
               <% } %>
               <hr>
-              <p class="timestamp"><%= message.timestamp_formatted %></p>
+              <div class="last-row">
+                <% if (user && user.status === "admin") { %>
+                  <a href="<%= message.url + '/delete' %>" class="delete-message-button">Delete</a>
+                <% } %>
+                <p class="timestamp"><%= message.timestamp_formatted %></p>
+              </div>
             </div>
           <% }) %>
         <% } %>
