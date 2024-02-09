@@ -11,7 +11,10 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 
 exports.home_get = asyncHandler(async (req, res, next) => {
-  const messages = await Message.find().sort({ timestamp: -1 }).exec();
+  const messages = await Message.find()
+    .sort({ timestamp: -1 })
+    .populate("user")
+    .exec();
   res.render("index", {
     title: "Home | Members Only",
     user: req.user,
