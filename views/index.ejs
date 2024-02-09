@@ -12,6 +12,9 @@
             <div class="message">
               <h3><%= message.title %></h3>
               <p><%= message.text %></p>
+              <% if (user && user.status !== "guest") { %>
+                <p>From: <%= message.user.username %></p>
+              <% } %>
               <hr>
               <p class="timestamp"><%= message.timestamp_formatted %></p>
             </div>
