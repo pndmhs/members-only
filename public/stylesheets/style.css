@@ -164,7 +164,7 @@ main h2 {
 form input,
 form textarea,
 form button {
-  font-style: inherit;
+  font-family: inherit;
   font-size: inherit;
   color: inherit;
   border-radius: 6px;
