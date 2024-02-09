@@ -164,7 +164,7 @@ exports.join_club_post = [
       await User.findByIdAndUpdate(req.user._id, user);
       res.render("congratulate_user", {
         title: "Join Member",
-        user: req.user,
+        user: user,
       });
     }
   }),
@@ -176,3 +176,43 @@ exports.become_admin_get = asyncHandler(async (req, res, next) => {
     user: req.user,
   });
 });
+
+exports.become_admin_post = [
+  body("admin_code")
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .withMessage("Code must not be empty")
+    .custom((value) => {
+      if (value !== process.env.ADMIN_CODE) {
+        throw new Error("Code is not correct. Try again !");
+      }
+      return true;
+    }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.render("admin_form", {
+        title: "Become an Admin",
+        user: req.user,
+      });
+      return;
+    } else {
+      const user = new User({
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        username: req.user.username,
+        password: req.user.password,
+        status: "admin",
+        _id: req.user._id,
+      });
+      await User.findByIdAndUpdate(req.user._id, user);
+      res.render("congratulate_user", {
+        title: "Become an Admin",
+        user: user,
+      });
+    }
+  }),
+];
