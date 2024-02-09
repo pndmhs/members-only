@@ -118,8 +118,17 @@ main h2 {
   margin: 0;
 }
 
+.message .last-row {
+  display: flex;
+  width: 100%;
+}
+
+.message .delete-message-button {
+  color: #ff2626;
+}
+
 .message .timestamp {
-  text-align: right;
+  margin-left: auto;
 }
 
 .form-container {
@@ -201,4 +210,25 @@ form button:hover {
 .signup-success a {
   color: white;
   text-decoration: underline;
+}
+
+.delete-message-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.confirm-delete {
+  display: flex;
+  gap: 2rem;
+}
+
+.confirm-delete button {
+  padding: 8px 12px;
+  background-color: #1a1a1a;
+  color: inherit;
+  font-style: inherit;
+  font-weight: 600;
+  border: 1px solid #e0e0e0;
 }
