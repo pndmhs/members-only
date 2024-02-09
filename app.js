@@ -13,6 +13,8 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const User = require("./models/user");
 
+const compression = require("compression");
+
 const app = express();
 
 const mongoose = require("mongoose");
@@ -81,6 +83,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
